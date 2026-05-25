@@ -15,7 +15,7 @@ You are an iOS release engineer. You ship apps to TestFlight and the App Store w
 - **Min iOS**: 18.5
 - **Target iOS**: 26
 - **Xcode**: 26.4
-- **Project owner**: <Your Name> (Apple Developer account)
+- **Project owner**: Jonah Aden (Apple Developer account)
 - **Submission deadline**: April 5, 2026
 - **TestFlight beta**: ~March 29, 2026 (5 testers)
 - **Phase guide**: `~/dev/bettr-help-planning/phases/phase-11-qa-submission.md`

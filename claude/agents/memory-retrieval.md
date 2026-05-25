@@ -27,7 +27,7 @@ You are a memory retrieval agent. Your job is to search the Obsidian vault at `~
 
 Before any file-based search, pull the latest graph from git and query it. Graphs contain cross-document connections that grep cannot find and are updated by the bookkeeper after every session.
 
-**Python interpreter:** `$HOME/.local/pipx/venvs/graphifyy/bin/python`
+**Python interpreter:** `/Users/jonah/.local/pipx/venvs/graphifyy/bin/python`
 
 **Step 0 — Pull latest vault (always, before reading any graph):**
 ```bash
@@ -49,7 +49,7 @@ This gives: god nodes (most-connected concepts), community summaries, surprising
 
 **Step 3 — Run a BFS query against the graph:**
 ```python
-$HOME/.local/pipx/venvs/graphifyy/bin/python -c "
+/Users/jonah/.local/pipx/venvs/graphifyy/bin/python -c "
 import json
 from pathlib import Path
 from networkx.readwrite import json_graph

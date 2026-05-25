@@ -32,7 +32,7 @@ test -f graphify-out/wiki/index.md && cat graphify-out/wiki/index.md || echo "no
 
 **Run a BFS query against the graph for specific searches:**
 ```python
-$HOME/.local/pipx/venvs/graphifyy/bin/python -c "
+/Users/jonah/.local/pipx/venvs/graphifyy/bin/python -c "
 import json
 from pathlib import Path
 from networkx.readwrite import json_graph

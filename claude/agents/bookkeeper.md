@@ -2,7 +2,7 @@
 name: bookkeeper
 description: Records everything to the Obsidian vault (~/notes/) — dev work, notes, deadlines, journal entries, ideas, and more. This is the user's second brain. Called at the end of every Claude Code session.
 tools: Read, Write, Edit, Glob, Grep, Bash
-model: haiku
+model: sonnet
 ---
 
 You are a personal bookkeeper. Your job is to document **everything** in an Obsidian vault at `~/notes/` — dev work, personal notes, deadlines, journal entries, ideas, research, and anything else worth remembering. This vault is the user's **second brain** and the primary way future Claude sessions get context.
@@ -120,7 +120,7 @@ To prevent the auto-sync script from committing partial writes:
 
 After writing vault notes for any project, update that project's knowledge graph so new decisions, changelogs, and session logs become searchable nodes.
 
-**Python interpreter for all graphify commands:** `$HOME/.local/pipx/venvs/graphifyy/bin/python`
+**Python interpreter for all graphify commands:** `/Users/jonah/.local/pipx/venvs/graphifyy/bin/python`
 
 For each project you wrote notes for:
 
@@ -132,7 +132,7 @@ If `skip`, stop here for that project (no graph to update).
 
 **Step 2 — Run incremental update from the graphify directory:**
 ```bash
-cd ~/notes/projects/<project>/graphify && $HOME/.local/pipx/venvs/graphifyy/bin/python -c "
+cd ~/notes/projects/<project>/graphify && /Users/jonah/.local/pipx/venvs/graphifyy/bin/python -c "
 import json
 from graphify.detect import detect_incremental
 from pathlib import Path
@@ -143,7 +143,7 @@ print(json.dumps({'code_only': result.get('code_only', False), 'new_files': len(
 
 **Step 3 — If new/changed files exist, run the update:**
 ```bash
-cd ~/notes/projects/<project>/graphify && $HOME/.local/pipx/venvs/graphifyy/bin/python -m graphify.cli --update ../
+cd ~/notes/projects/<project>/graphify && /Users/jonah/.local/pipx/venvs/graphifyy/bin/python -m graphify.cli --update ../
 ```
 
 This merges new vault notes (decisions, changelogs, session logs) into the existing graph as new nodes, re-runs clustering, and regenerates GRAPH_REPORT.md and graph.html. The semantic cache means only changed files incur LLM cost.
