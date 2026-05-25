@@ -249,8 +249,9 @@
   },
   "hooks": {
     "SessionStart": [
-      { "matcher": "startup", "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/git_session_check.sh" } ] },
-      { "matcher": "resume",  "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/git_session_check.sh" } ] }
+      { "matcher": "startup", "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/git_session_check.sh" }, { "type": "command", "command": "node __HOME__/scripts/hooks/gateguard-prime-state.js" } ] },
+      { "matcher": "resume",  "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/git_session_check.sh" }, { "type": "command", "command": "node __HOME__/scripts/hooks/gateguard-prime-state.js" } ] },
+      { "matcher": "clear",   "hooks": [ { "type": "command", "command": "node __HOME__/scripts/hooks/gateguard-prime-state.js" } ] }
     ],
     "PostToolUse": [
       { "matcher": "Bash",        "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/auto_push_after_commit.sh" } ] },
@@ -264,6 +265,7 @@
       { "matcher": "*", "hooks": [ { "type": "command", "command": "bash __HOME__/scripts/hooks/pre-compact-bookkeeper.sh" } ] }
     ],
     "PreToolUse": [
+      { "matcher": "Edit|Write|MultiEdit", "hooks": [ { "type": "command", "command": "node __HOME__/scripts/hooks/gateguard-skip-extensions.js" } ] },
       { "matcher": "Bash",        "hooks": [ { "type": "command", "command": "python3 __HOME__/scripts/bash_command_validator.py" } ] },
       { "matcher": "Bash",        "hooks": [ { "type": "command", "command": "python3 __HOME__/.claude/hooks/destructive_blocker.py" } ] },
       { "matcher": "Bash",        "hooks": [ { "type": "command", "command": "python3 __HOME__/.claude/hooks/bash_as_read_blocker.py" } ] },
@@ -294,7 +296,7 @@
     "swift-lsp@claude-plugins-official": true,
     "vercel-plugin@vercel-vercel-plugin": true,
     "vercel@claude-plugins-official": true,
-    "linear@claude-plugins-official": false
+    "linear@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "everything-claude-code": {
@@ -309,6 +311,9 @@
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "env": {
+    "GATEGUARD_SKIP_PATHS": "pending-sessions,.claude/commands,.claude/skills,/notes/,/_archive/,/.next/,/node_modules/,/dist/,/.turbo/,/graphify-out/,/build/,/coverage/"
+  },
   "mcpServers": {
     "_comment_personal_assistant": "Optional. Connects to a personal Heroku-hosted FastAPI assistant. Delete this block if you don't have one. PA_API_TOKEN must be your own service token.",
     "personal-assistant": {
